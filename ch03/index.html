@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React ⚛️</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const dishes = [
+        "Macaroni and Cheese",
+        "Salmon",
+        "Tofu with Vegetables",
+        "Minestrone",
+      ];
+
+      function Header(props) {
+        return (
+          <header>
+            <h1>{props.name}'s Kitchen</h1>
+          </header>
+        );
+      }
+      function Main(props) {
+        return (
+          <section>
+            <p>We serve the most {props.adjective} food around</p>
+            <ul>
+              {props.dishes.map((dish) => (
+                <li key={dish}>{dish}</li>
+              ))}
+            </ul>
+          </section>
+        );
+      }
+
+      function Footer(props) {
+        return (
+          <footer>
+            <p>Copyright {props.year} </p>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <Header name={"Ralph"} />
+            <Main adjective={"delicious"} dishes={dishes} />
+            <Footer year={new Date().getFullYear()} />
+          </div>
+        );
+      }
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
